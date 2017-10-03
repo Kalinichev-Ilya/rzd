@@ -72,7 +72,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Ilya Kalinichev** - *Initial work* - [PurpleBooth](https://github.com/Kalinichev-Ilya)
+* **Ilya Kalinichev** - *Initial work* - [Kalinichev-Ilya](https://github.com/Kalinichev-Ilya)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
