@@ -1,21 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Trains</h1>
+<h1>routes</h1>
 
 <table>
   <thead>
   <tr>
-    <th>Number</th>
+    <th>Name</th>
     <th colspan="3"></th>
   </tr>
   </thead>
 
   <tbody>
-  <%= render @trains %>
+  <%= render @routes %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Train', new_train_path %> <br>
+<%= link_to 'New route', new_route_path %> <br>
 <%= link_to 'Home', home_index_path %>

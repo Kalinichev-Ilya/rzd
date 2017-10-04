@@ -1,10 +1,10 @@
-<%= form_with(model: train, local: true) do |form| %>
-    <% if train.errors.any? %>
+<%= form_with(model: route, local: true) do |form| %>
+    <% if route.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(train.errors.count, "error") %> prohibited this train from being saved:</h2>
+          <h2><%= pluralize(route.errors.count, "error") %> prohibited this route from being saved:</h2>
 
           <ul>
-            <% train.errors.full_messages.each do |message| %>
+            <% route.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
             <% end %>
           </ul>
@@ -12,8 +12,8 @@
     <% end %>
 
     <div class="field">
-      <%= form.label :number %>
-      <%= form.text_field :number, id: :train_number %>
+      <%= form.label :name %>
+      <%= form.text_field :name, id: :route_name %>
     </div>
 
     <div class="actions">
