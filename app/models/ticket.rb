@@ -5,4 +5,6 @@ class Ticket < ApplicationRecord
 
   belongs_to :from_station, class_name: "RailwayStation", foreign_key: :from_station_id, optional: true
   belongs_to :to_station, class_name: "RailwayStation", foreign_key: :to_station_id, optional: true
+  
+  belongs_to :user, optional: true
 end
