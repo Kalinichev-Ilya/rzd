@@ -4,8 +4,19 @@
     %meta{:content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}/
     %title RZD
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+
   %body
     %div.jumbotron
-    = yield
+      = yield
+
+  %footer
+    .container.text-center
+      %hr/
+      .row-fluid
+        .col-lg-12
+          %ul.nav.nav-pills.nav-justified
+            %li
+              © 2017 Ilya Kalinichev. Educational project in
+              =link_to 'online school Thinknetica', 'http://www.thinknetica.com'
