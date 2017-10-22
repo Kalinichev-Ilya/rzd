@@ -1,7 +1,29 @@
-%p#notice= notice
-%p
+%div#notice= notice
+.col-lg-6
   %strong Title:
   = @route.name
+  .col-lg-6
+    %strong Trains:
+    - if @route.trains.any?
+      - @route.trains.each do |train|
+        .col-lg-3
+        = train.number
+    - else
+      No trains on this route,
+      %br
+      = link_to 'create train', new_train_path
+
+  .col-lg-6
+    %strong Stations:
+    - if @route.railway_stations.any?
+      - @route.railway_stations.each do |station|
+        .col-lg-3
+        = station.title
+    - else
+      No stations in this route,
+      %br
+      = link_to 'create station', new_railway_station_path
+        
 = link_to 'Edit', edit_route_path(@route)
 %br/
 = link_to 'Back', routes_path
