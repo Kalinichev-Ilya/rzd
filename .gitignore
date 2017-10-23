@@ -25,3 +25,6 @@
 /yarn-error.log
 
 .byebug_history
+
+app/assets/javascripts/bootstrap.js.map
+app/assets/javascripts/bootstrap.min.js.map
