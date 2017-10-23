@@ -1,7 +1,7 @@
-%p#notice= notice
-%p
+#notice= notice
+.col-lg-6
   %strong Title:
   = @railway_station.title
 = link_to 'Edit', edit_railway_station_path(@railway_station)
-%br/
+%br
 = link_to 'Back', railway_stations_path
