@@ -10,8 +10,7 @@
   .field
     = form.label :number
     = form.text_field :number, id: :train_number
-    = form.select 'route_id', @routes.collect {|route| [route.name, route.id]}
-
+    = form.select 'route_id', options_from_collection_for_select(@routes, 'id', 'name')
 
   .actions
     = form.submit

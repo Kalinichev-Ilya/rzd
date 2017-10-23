@@ -3,11 +3,10 @@
   %strong Title:
   = @train.number
   %strong Route:
-  - if @train.route != nil
+  - if @train.route
     = @train.route.name
   - else
     No route
-
 
 = link_to 'Edit', edit_train_path(@train)
 %br/
