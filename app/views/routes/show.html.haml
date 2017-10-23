@@ -1,4 +1,4 @@
-%div#notice= notice
+#notice= notice
 .col-lg-6
   %strong Title:
   = @route.name
@@ -11,7 +11,7 @@
     - else
       No trains on this route,
       %br
-      = link_to 'create train', new_train_path
+    = link_to 'create train', new_train_path
 
   .col-lg-6
     %strong Stations:
@@ -22,8 +22,8 @@
     - else
       No stations in this route,
       %br
-      = link_to 'create station', new_railway_station_path
+    = link_to 'create station', new_railway_station_path
         
 = link_to 'Edit', edit_route_path(@route)
-%br/
+%br
 = link_to 'Back', routes_path
