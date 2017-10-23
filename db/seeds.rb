@@ -32,7 +32,8 @@ def number(nums_count, chars_count, separator)
   chars = []
   nums_count.times { nums << (0..9).to_a.sample }
   chars_count.times { chars << ('A'..'Z').to_a.sample }
-  "#{nums.join ''}#{separator}#{chars.join ''}"
+
+  "#{nums.join}#{separator}#{chars.join}"
 end
 
 # Create Trains
