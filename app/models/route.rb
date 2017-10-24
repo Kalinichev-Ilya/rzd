@@ -4,8 +4,8 @@ class Route < ApplicationRecord
   has_many :trains
 
   validates :name, presence: true,
-                   format: { with: /\A[a-z]+-? ?[a-z]+\z/i,
+                   format: { with: /\A[a-z-]+([- ])?[a-z-]+\z/i,
                              message: "Name doesn't match with format." },
-                   length: { in: 6..20 },
+                   length: { in: 6..30 },
                    uniqueness: true
 end

@@ -1,13 +1,11 @@
-%p#notice= notice
-%h1 Railway Stations
+#notice= notice
+%h1 Railway stations
 %table
   %thead
     %tr
       %th Title
-      %th{:colspan => "3"}
+      %th{:colspan => '3'}
   %tbody
     = render @railway_stations
-%br/
+%br
 = link_to 'New Railway Station', new_railway_station_path
-%br/
-= link_to 'Home', home_index_path
