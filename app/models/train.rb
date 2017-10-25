@@ -5,6 +5,7 @@ class Train < ApplicationRecord
              class_name: 'RailwayStation',
              foreign_key: :current_station_id,
              optional: true
+  has_many :wagons
 
   validates :number, presence: true
 end
