@@ -1,10 +1,10 @@
 #notice= notice
 .col-lg-6
   %strong Title:
-  = @train.number
-  %strong Route:
-  = @train.route&.name || 'No route'
+  = @wagon.number
+  %strong Train:
+  = @wagon.train.number || 'No train'
 
-= link_to 'Edit', edit_train_path(@train)
+= link_to 'Edit', edit_wagon_path(@wagon)
 %br
-= link_to 'Back', trains_path
+= link_to 'Back', wagons_path

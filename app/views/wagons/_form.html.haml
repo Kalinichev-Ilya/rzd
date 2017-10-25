@@ -1,9 +1,10 @@
-= form_with(model: train, local: true) do |form|
-  = render 'layouts/error', object: train
+= form_with(model: wagon, local: true) do |form|
+  = render 'layouts/error', object: wagon
   .field
-    = form.label :number
-    = form.text_field :number, id: :train_number
-    = form.select :route_id, options_from_collection_for_select(@routes, :id, :name)
+    = form.select :grade, options_for_select(%w[berth roomette]), {:selected=> 'berth'}
+    = form.select :upper_seats_count, options_for_select(0..30), { prompt: 'No seats' }
+    = form.select :bottom_seats_count, options_for_select(0..30), { prompt: 'No seats' }
+    = form.select :train_id, options_from_collection_for_select(@trains, :id, :number)
 
   .actions
     = form.submit
