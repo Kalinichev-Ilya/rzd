@@ -3,6 +3,11 @@ class Wagon < ApplicationRecord
 
   validate :permissible_type, on: :create
 
+  enum grade: {
+    berth: 'berth',
+    roomette: 'roomette'
+  }
+
   private
 
   def permissible_type
