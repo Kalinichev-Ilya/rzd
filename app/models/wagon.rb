@@ -1,18 +1,11 @@
 class Wagon < ApplicationRecord
-  belongs_to :train, optional: true
+  belongs_to :train
 
-  validate :permissible_type, on: :create
+  validates :grade, inclusion: { in: %w[berth roomette],
+                                 message: 'Invalid Type: wagon can be only roomette or berth.' }
 
   enum grade: {
     berth: 'berth',
     roomette: 'roomette'
   }
-
-  private
-
-  def permissible_type
-    unless %w[berth roomette].include? grade
-      errors.add(:type, 'Invalid Type: wagon can be only roomette or berth.')
-    end
-  end
 end

@@ -1,6 +1,6 @@
 class TrainsController < ApplicationController
   before_action :set_train, only: %i[show edit update destroy]
-  before_action :set_routes, only: %i[new create edit update]
+  before_action :set_routes, only: %i[new edit]
 
   def index
     @trains = Train.all

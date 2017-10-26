@@ -43,7 +43,7 @@ class WagonsController < ApplicationController
     @wagon = Wagon.find(params[:id])
   end
 
-  def set_train
+  def set_trains
     @trains = Train.all
   end
 
