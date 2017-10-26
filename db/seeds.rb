@@ -61,9 +61,9 @@ stations.each_with_index do |station, i|
 end
 
 # Create wagons
-trains.each_with_index do |train, i|
-  rand(2..14).times do
-    Wagon.create! number: i,
+trains.each do |train|
+  rand(2..14).times do |i|
+    Wagon.create! number: i + rand(1..30),
                   grade: %w[berth roomette].sample,
                   upper_seats_count: rand(10..30),
                   bottom_seats_count: rand(10..30),
