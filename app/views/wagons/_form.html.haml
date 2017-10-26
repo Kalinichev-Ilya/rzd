@@ -1,10 +1,18 @@
 = form_with(model: wagon, local: true) do |form|
   = render 'layouts/error', object: wagon
+  %table
+  %thead
+    %tr
+      %th grade:
+      %th upper seats:
+      %th bottom seats:
+      %th train:
+  %tbody
   .field
-    = form.select :grade, options_for_select(%w[berth roomette]), {:selected=> 'berth'}
-    = form.select :upper_seats_count, options_for_select(0..30), { prompt: 'No seats' }
-    = form.select :bottom_seats_count, options_for_select(0..30), { prompt: 'No seats' }
-    = form.select :train_id, options_from_collection_for_select(@trains, :id, :number)
+    %td= form.collection_select(:grade, %w[berth roomette], :to_s, :to_s)
+    %td= form.select :upper_seats_count, options_for_select(0..30), { prompt: 'No seats' }
+    %td= form.select :bottom_seats_count, options_for_select(0..30), { prompt: 'No seats' }
+    %td= form.select :train_id, options_from_collection_for_select(@trains, :id, :number)
 
   .actions
     = form.submit

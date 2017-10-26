@@ -1,6 +1,6 @@
 class WagonsController < ApplicationController
   before_action :set_wagon, only: %i[show edit update destroy]
-  before_action :set_train, only: %i[new show edit update]
+  before_action :set_trains, only: %i[new show edit update]
 
   def index
     @wagons = Wagon.all
