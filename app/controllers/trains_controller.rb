@@ -6,6 +6,8 @@ class TrainsController < ApplicationController
     @trains = Train.all
   end
 
+  # @train.wagons.group('grade').count
+  # {"roomette"=>1, "berth"=>3}
   def show
     @berth_count = @train.wagons.berth.count
     @roomette_count = @train.wagons.roomette.count
