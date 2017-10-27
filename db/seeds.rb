@@ -32,7 +32,7 @@ def number(nums_count, chars_count, separator)
   chars = []
   nums_count.times { nums << (0..9).to_a.sample }
   chars_count.times { chars << ('A'..'Z').to_a.sample }
-
+  
   "#{nums.join}#{separator}#{chars.join}"
 end
 
@@ -58,4 +58,15 @@ stations.each_with_index do |station, i|
                  from_station: station,
                  to_station: stations[stations.count - (i + 1)],
                  user: users[i]
+end
+
+# Create wagons
+trains.each do |train|
+  rand(2..14).times do |i|
+    Wagon.create! number: i + rand(1..30),
+                  grade: %w[berth roomette].sample,
+                  upper_seats_count: rand(10..30),
+                  bottom_seats_count: rand(10..30),
+                  train: train
+  end
 end
