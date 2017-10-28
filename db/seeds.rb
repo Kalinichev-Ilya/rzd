@@ -62,8 +62,8 @@ end
 
 # Create wagons
 trains.each do |train|
-  rand(2..14).times do |i|
-    Wagon.create! number: i + rand(1..30),
+  15.times do |i|
+    Wagon.create! number: i,
                   grade: %w[berth roomette].sample,
                   upper_seats_count: rand(10..30),
                   bottom_seats_count: rand(10..30),
