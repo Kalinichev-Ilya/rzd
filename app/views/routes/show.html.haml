@@ -16,9 +16,10 @@
   .col-lg-6
     %strong Stations:
     - if @route.railway_stations.any?
-      - @route.railway_stations.each do |station|
+      - @stations.each do |station|
         .col-lg-3
-        = station.title
+        %td= @route.station_number(station)
+        %td= station.title
     - else
       No stations in this route,
       %br
