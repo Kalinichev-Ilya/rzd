@@ -6,6 +6,7 @@
   = @wagon.train.number || 'No train'
   %strong Type:
   = @wagon.type
+  %br
   %strong Seats:
   - @wagon.show_seats_count.each do |type, count|
     = "#{type}: #{count}"
