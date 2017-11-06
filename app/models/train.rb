@@ -9,15 +9,15 @@ class Train < ApplicationRecord
 
   validates :number, presence: true
 
-  def seats_count_by_wagon_type
-    berth_upper = wagons.berth.sum(:upper_seats_count)
-    berth_bottom = wagons.berth.sum(:bottom_seats_count)
-    roomette_upper = wagons.roomette.sum(:upper_seats_count)
-    roomette_bottom = wagons.roomette.sum(:bottom_seats_count)
-
-    {
-      berth: { upper: berth_upper, bottom: berth_bottom },
-      roomette: { upper: roomette_upper, bottom: roomette_bottom }
-    }
-  end
+  # def seats_count_by_wagon_type
+  #   berth_upper = wagons.berth.sum(:top_seats)
+  #   berth_bottom = wagons.berth.sum(:bottom_seats)
+  #   roomette_upper = wagons.roomette.sum(:top_seats)
+  #   roomette_bottom = wagons.roomette.sum(:bottom_seats)
+  #
+  #   {
+  #     berth: { upper: berth_upper, bottom: berth_bottom },
+  #     roomette: { upper: roomette_upper, bottom: roomette_bottom }
+  #   }
+  # end
 end
