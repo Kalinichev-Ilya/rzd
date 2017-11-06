@@ -61,12 +61,22 @@ stations.each_with_index do |station, i|
 end
 
 # Create wagons TODO make wagons using STI
-# trains.each do |train|
-#   15.times do |i|
-#     Wagon.create! number: i,
-#                   grade: %w[berth roomette].sample,
-#                   top_seats: rand(10..30),
-#                   bottom_seats: rand(10..30),
-#                   train: train
-#   end
-# end
+trains.each do |train|
+  5.times do
+    SvWagon.create train: train,
+                   bottom_seats: rand(1..30)
+    
+    CoupeWagon.create train: train,
+                      bottom_seats: rand(1..15),
+                      top_seats: rand(1..15)
+    
+    EconomyWagon.create train: train,
+                        bottom_seats: rand(1..15),
+                        top_seats: rand(1..15),
+                        side_top_seats: rand(1..15),
+                        side_bottom_seats: rand(1..15)
+    
+    SeatingWagon.create train: train,
+                        seating_seats: rand(1..40)
+  end
+end

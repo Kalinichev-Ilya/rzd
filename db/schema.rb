@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171511210916) do
+ActiveRecord::Schema.define(version: 20171511210917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 20171511210916) do
 
   create_table "wagons", force: :cascade do |t|
     t.integer "number"
-    t.string "grade", default: "berth"
     t.integer "top_seats"
     t.integer "bottom_seats"
     t.datetime "created_at", null: false
