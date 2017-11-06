@@ -3,8 +3,8 @@ class CreateWagons < ActiveRecord::Migration[5.1]
     create_table :wagons do |t|
       t.integer :number
       t.string :grade, default: 'berth'
-      t.integer :upper_seats_count, default: 0
-      t.integer :bottom_seats_count, default: 0
+      t.integer :upper_seats_count
+      t.integer :bottom_seats_count
 
       t.timestamps
     end

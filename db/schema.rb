@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171410210914) do
+ActiveRecord::Schema.define(version: 20171511210916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,11 +68,15 @@ ActiveRecord::Schema.define(version: 20171410210914) do
   create_table "wagons", force: :cascade do |t|
     t.integer "number"
     t.string "grade", default: "berth"
-    t.integer "upper_seats_count", default: 0
-    t.integer "bottom_seats_count", default: 0
+    t.integer "top_seats"
+    t.integer "bottom_seats"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "train_id"
+    t.integer "side_top_seats"
+    t.integer "side_bottom_seats"
+    t.string "type"
+    t.integer "seating_seats"
     t.index ["train_id"], name: "index_wagons_on_train_id"
   end
 

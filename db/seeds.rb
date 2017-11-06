@@ -60,13 +60,13 @@ stations.each_with_index do |station, i|
                  user: users[i]
 end
 
-# Create wagons
-trains.each do |train|
-  15.times do |i|
-    Wagon.create! number: i,
-                  grade: %w[berth roomette].sample,
-                  upper_seats_count: rand(10..30),
-                  bottom_seats_count: rand(10..30),
-                  train: train
-  end
-end
+# Create wagons TODO make wagons using STI
+# trains.each do |train|
+#   15.times do |i|
+#     Wagon.create! number: i,
+#                   grade: %w[berth roomette].sample,
+#                   top_seats: rand(10..30),
+#                   bottom_seats: rand(10..30),
+#                   train: train
+#   end
+# end
