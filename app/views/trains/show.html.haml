@@ -8,17 +8,6 @@
   = @train.route&.name || 'No route'
   %br
 
-  -# OLD
-  -#%strong Wagons:
-  -#= "berth: #{@berth_count}"
-  -#= "roomette: #{@roomette_count}"
-  -#%br
-  -#
-  -#%strong Seats:
-  -#- @seats_count_by_wagon_type.each do |grade, counts|
-  -#  - counts.each do |type, count|
-  -#    = "#{grade}-#{type}: #{count}"
-
 .col-lg-6
   %strong Wagons:
   - if @train.by_asc

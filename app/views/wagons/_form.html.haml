@@ -3,15 +3,21 @@
   %table
   %thead
     %tr
-      %th grade:
-      %th upper seats:
+      %th type:
+      %th top seats:
       %th bottom seats:
+      %th side top seats:
+      %th side bottom seats:
+      %th seating seats:
       %th train:
   %tbody
   .field
-    %td= form.select :grade, %w[berth roomette]
-    %td= form.select :upper_seats_count, options_for_select(0..30), { prompt: 'No seats' }
-    %td= form.select :bottom_seats_count, options_for_select(0..30), { prompt: 'No seats' }
+    %td= form.select :type, %w[EconomyWagon SeatingWagon, SvWagon, CoupeWagon]
+    %td= form.select :top_seats, options_for_select(0..15), { prompt: 'No seats' }
+    %td= form.select :bottom_seats, options_for_select(0..15), { prompt: 'No seats' }
+    %td= form.select :side_top_seats, options_for_select(0..15), { prompt: 'No seats' }
+    %td= form.select :side_bottom_seats, options_for_select(0..15), { prompt: 'No seats' }
+    %td= form.select :seating_seats, options_for_select(0..40), { prompt: 'No seats' }
     %td= form.select :train_id, options_from_collection_for_select(@trains, :id, :number)
 
   .actions
