@@ -1,5 +1,5 @@
 %tr
   %td= wagon.number
-  %td= link_to 'Show', wagon
+  %td= link_to 'Show', wagon_path(wagon)
   %td= link_to 'Edit', edit_wagon_path(wagon)
-  %td= link_to 'Destroy', wagon, method: :delete, data: { confirm: 'Are you sure?' }
+  %td= link_to 'Destroy', wagon_path(wagon), method: :delete, data: { confirm: 'Are you sure?' }
