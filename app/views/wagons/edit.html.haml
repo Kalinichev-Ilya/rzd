@@ -1,5 +1,5 @@
 %h1 Editing Wagon
 = render 'form', wagon: @wagon
-= link_to 'Show', @wagon
+= link_to 'Show', edit_wagon_path(@wagon)
 %br
 = link_to 'Back', wagons_path
