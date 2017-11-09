@@ -12,4 +12,9 @@ class Train < ApplicationRecord
   def count(wagon_type, seats_type)
     wagons.where(type: wagon_type).sum(seats_type)
   end
+
+  def sorted_wagons
+    return wagons if sorted_by_head
+    wagons.order(number: :desc)
+  end
 end
