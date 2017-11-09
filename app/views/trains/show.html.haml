@@ -10,12 +10,8 @@
 
 .col-lg-6
   %strong Wagons:
-  - if @train.by_asc
-    - @train.wagons.each do |wagon|
-      = link_to wagon.number, wagon_path(id: wagon.id)
-  - else
-    - @train.wagons.reverse_each do |wagon|
-      = link_to wagon.number, wagon_path(id: wagon.id)
+  - @train.sorted_wagons.each do |wagon|
+    = link_to wagon.number, wagon_path(id: wagon.id)
 
 = link_to 'Edit', edit_train_path(@train)
 %br

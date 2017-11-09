@@ -8,7 +8,7 @@
   = @wagon.type
   %br
   %strong Seats:
-  - @wagon.show_seats_count.each do |type, count|
+  - @wagon.seats_info.each do |type, count|
     = "#{type}: #{count}"
 
 = link_to 'Edit', edit_wagon_path(@wagon)
