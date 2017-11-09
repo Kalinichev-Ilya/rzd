@@ -1,5 +1,5 @@
 class AddAscToTrains < ActiveRecord::Migration[5.1]
   def change
-    add_column :trains, :by_asc, :boolean
+    add_column :trains, :sorted_by_head, :boolean, null: false
   end
 end

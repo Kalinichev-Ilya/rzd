@@ -41,7 +41,7 @@ routes.zip(stations).each do |route, station|
   Train.create! number: number(3, 2, '-'),
                 route: route,
                 current_station: station,
-                by_asc: [true, false].sample
+                sorted_by_head: [true, false].sample
 end
 
 # Create Users
