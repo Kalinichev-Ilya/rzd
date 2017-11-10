@@ -14,7 +14,7 @@ class Train < ApplicationRecord
   end
 
   def sorted_wagons
-    return wagons if sorted_by_head
+    return wagons.order(number: :asc) if sorted_by_head
     wagons.order(number: :desc)
   end
 end
