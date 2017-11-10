@@ -32,7 +32,7 @@ def number(nums_count, chars_count, separator)
   chars = []
   nums_count.times { nums << (0..9).to_a.sample }
   chars_count.times { chars << ('A'..'Z').to_a.sample }
-  
+
   "#{nums.join}#{separator}#{chars.join}"
 end
 
@@ -40,7 +40,8 @@ end
 routes.zip(stations).each do |route, station|
   Train.create! number: number(3, 2, '-'),
                 route: route,
-                current_station: station
+                current_station: station,
+                sorted_by_head: [true, false].sample
 end
 
 # Create Users
@@ -62,11 +63,21 @@ end
 
 # Create wagons
 trains.each do |train|
-  15.times do |i|
-    Wagon.create! number: i,
-                  grade: %w[berth roomette].sample,
-                  upper_seats_count: rand(10..30),
-                  bottom_seats_count: rand(10..30),
-                  train: train
+  5.times do
+    SvWagon.create train: train,
+                   bottom_seats: rand(1..30)
+
+    CoupeWagon.create train: train,
+                      bottom_seats: rand(1..15),
+                      top_seats: rand(1..15)
+
+    EconomyWagon.create train: train,
+                        bottom_seats: rand(1..15),
+                        top_seats: rand(1..15),
+                        side_top_seats: rand(1..15),
+                        side_bottom_seats: rand(1..15)
+
+    SeatingWagon.create train: train,
+                        seating_seats: rand(1..40)
   end
 end

@@ -1,11 +1,22 @@
 class Wagon < ApplicationRecord
   belongs_to :train
 
-  validates :grade, inclusion: { in: %w[berth roomette],
-                                 message: 'Invalid Type: wagon can be only roomette or berth.' }
+  # added for complete lesson-16, this validation is not needed
+  validates :number, presence: true, uniqueness: { scope: %i[train_id],
+                                                   message: 'This number already exists' }
 
-  enum grade: {
-    berth: 'berth',
-    roomette: 'roomette'
-  }
+  before_validation :set_number, on: :create
+
+  def seats_info
+    { side_top_seats: side_top_seats,
+      side_bottom_seats: side_bottom_seats,
+      top_seats: top_seats,
+      bottom_seats: bottom_seats }
+  end
+
+  private
+
+  def set_number
+    self.number = train.wagons.maximum(:number).to_i + 1
+  end
 end

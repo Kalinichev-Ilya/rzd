@@ -8,4 +8,8 @@ class Route < ApplicationRecord
                              message: "Name doesn't match with format." },
                    length: { in: 6..30 },
                    uniqueness: true
+  
+  def station_number(station)
+    railway_stations_routes.find_by(railway_station: station)&.station_number
+  end
 end

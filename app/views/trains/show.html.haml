@@ -8,15 +8,10 @@
   = @train.route&.name || 'No route'
   %br
 
+.col-lg-6
   %strong Wagons:
-  = "berth: #{@berth_count}"
-  = "roomette: #{@roomette_count}"
-  %br
-
-  %strong Seats:
-  - @seats_count_by_wagon_type.each do |grade, counts|
-    - counts.each do |type, count|
-      = "#{grade}-#{type}: #{count}"
+  - @train.sorted_wagons.each do |wagon|
+    = link_to wagon.number, wagon_path(id: wagon.id)
 
 = link_to 'Edit', edit_train_path(@train)
 %br
