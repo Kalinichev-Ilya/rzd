@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   resources :railway_stations do
     patch :set_number, on: :member
   end
-  resources :trains
+
+  resources :trains do
+    resources :wagons, shallow: true
+  end
+
   resources :routes
-  resources :wagons
 end
