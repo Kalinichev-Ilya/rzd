@@ -13,18 +13,30 @@
       %br
     = link_to 'create train', new_train_path
 
-  .col-lg-6
+  .col-lg-12
     %strong Stations:
-    - if @route.railway_stations.any?
-      - @stations.each do |station|
-        .col-lg-3
-        %td= @route.station_number(station)
-        %td= station.title
-    - else
-      No stations in this route,
-      %br
-    = link_to 'create station', new_railway_station_path
-        
+    %table
+      %tbody
+        %tr
+          %th Number:
+          %th{style: 'width: 150px'} Name:
+          %th Change  to:
+        %tr
+          - @stations.each do |station|
+            .col-lg-3
+              %td= @route.station_number(station) || 'n/a'
+              %td= station.title
+              %td
+                = form_tag set_position_railway_station_path(station), method: :patch do
+                  %table
+                    %tbody
+                      %td= number_field_tag :station_number
+                      %td= hidden_field_tag :route_id, @route_id
+                      %td= submit_tag 'submit'
+          = 'No stations in this route' if @stations == nil
+
+    = link_to 'Create station', new_railway_station_path
+
 = link_to 'Edit', edit_route_path(@route)
 %br
 = link_to 'Back', routes_path
