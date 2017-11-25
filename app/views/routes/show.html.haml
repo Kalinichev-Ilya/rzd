@@ -27,11 +27,11 @@
               %td= @route.station_number(station) || 'n/a'
               %td= station.title
               %td
-                = form_tag set_position_railway_station_path(station), method: :patch do
+                = form_tag set_number_railway_station_path(station), method: :patch do
                   %table
                     %tbody
-                      %td= number_field_tag :station_number
-                      %td= hidden_field_tag :route_id, @route_id
+                      %td= number_field_tag :station_number, station.position_in(@route)
+                      %td= hidden_field_tag :route_id, @route.id
                       %td= submit_tag 'submit'
           = 'No stations in this route' if @stations == nil
 
