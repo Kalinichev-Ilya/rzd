@@ -16,6 +16,14 @@ class RailwayStation < ApplicationRecord
     station_route(route).try(:station_number)
   end
 
+  def arrival_time(route)
+    station_route(route).arrival_time
+  end
+
+  def departure_time(route)
+    station_route(route).departure_time
+  end
+
   private
 
   def station_route(route)

@@ -19,11 +19,13 @@
       %tbody
         %tr
           %th Number:
-          %th{style: 'width: 150px'} Name:
+          %th{style: 'width: 150px'} Title:
           %th Change  to:
+          %th{style: 'width: 150px'} Arrival:
+          %th{style: 'width: 150px'} Departure:
         %tr
           - @stations.each do |station|
-            .col-lg-3
+            .col-lg-6
               %td= @route.station_number(station) || 'n/a'
               %td= station.title
               %td
@@ -33,6 +35,8 @@
                       %td= number_field_tag :station_number, station.position_in(@route)
                       %td= hidden_field_tag :route_id, @route.id
                       %td= submit_tag 'submit'
+              %td= station.arrival_time(@route).strftime("%d %a %H:%M")
+              %td= station.departure_time(@route).strftime("%d %a %H:%M")
           = 'No stations in this route' if @stations == nil
 
     = link_to 'Create station', new_railway_station_path
