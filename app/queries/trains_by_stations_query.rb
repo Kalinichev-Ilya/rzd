@@ -1,3 +1,8 @@
+# Route.joins(:trains, :railway_stations_routes)
+#      .where('railway_stations_routes.railway_station_id = ?
+#             AND railway_stations_routes.railway_station_id = ?',
+#             1, 16)
+
 module TrainsByStationsQuery
   def self.sql(first_station, last_station)
     return if first_station.nil? || last_station.nil?
@@ -16,7 +21,8 @@ module TrainsByStationsQuery
       ON railway_stations_routes.route_id = routes.id
       INNER JOIN trains
       ON routes.id = trains.route_id
-      WHERE railway_stations_routes.railway_station_id IN (#{first_station}, #{last_station})
+      WHERE railway_stations_routes.railway_station_id = #{first_station}
+      AND railway_stations_routes.railway_station_id = #{last_station}
     SQL
   end
 end
