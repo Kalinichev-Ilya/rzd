@@ -10,8 +10,8 @@
         %th Arrival time:
         %th Departure time:
         %th Route:
-        =form_for(@ticket, url: new_ticket_path, html: {method: 'GET'}) do |form|
-          - @results.each do |result|
+        - @results.each do |result|
+          =form_for(@ticket, url: new_ticket_path, html: {method: 'GET'}) do |form|
             %tr
               .col-lg-6
                 %td= link_to result['number'], train_path(result['id'])
@@ -21,6 +21,6 @@
                 =form.hidden_field(:train_id, value: result['id'])
                 =form.hidden_field(:from_station_id, value: @stations['from_station_id'])
                 =form.hidden_field(:to_station_id, value: @stations['to_station_id'])
-                %td= submit_tag 'purchase'
+                %td= form.submit 'purchase'
 
 =link_to 'New search', new_search_path
