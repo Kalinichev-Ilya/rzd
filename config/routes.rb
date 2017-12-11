@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   resources :routes
 
   resource :search, only: %i[new show]
+
+  resources :tickets
 end
