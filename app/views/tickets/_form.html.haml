@@ -1,0 +1,44 @@
+= form_with(model: ticket, local: true) do |form|
+  = render 'layouts/error', object: ticket
+  .field
+    .col-lg-12
+    %table
+      %tr
+        %th Train number:
+        %th From station:
+        %th To station:
+      %tr
+        %td= @train.number
+        %td= @from_station.title
+        %td= @to_station.title
+        = form.hidden_field(:train_id, value: @train.id)
+        = form.hidden_field(:from_station_id, value: @from_station.id)
+        = form.hidden_field(:to_station_id, value: @to_station.id)
+
+      =form_for(@passport, url: tickets_path, html: {method: 'POST'}) do |form|
+        %tr
+          %td= form.label :id
+          %td= form.text_field :idd
+        %tr
+          %td= form.label :series
+          %td= form.text_field :series
+        %tr
+          %td= form.label :issue_date
+          %td= form.date_select :issue_date
+        %tr
+          %td= form.label :issuer
+          %td= form.text_field :issuer
+        %tr
+          %td= form.label :division_code
+          %td= form.text_field :division_code
+        %tr
+          %td= form.label :name
+          %td= form.text_field :name
+        %tr
+          %td= form.label :surname
+          %td= form.text_field :surname
+        %tr
+          %td= form.label :birth_date
+          %td= form.date_select :birth_date
+  .actions
+    = form.submit
