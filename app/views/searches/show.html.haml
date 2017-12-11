@@ -1,5 +1,5 @@
 %h1 Search result:
--if @result.nil? || @result.count == 0
+-if @results.nil? || @results.count == 0
   = image_tag('no_result', size: "100x100")
   %p No result
 -else
@@ -10,12 +10,17 @@
         %th Arrival time:
         %th Departure time:
         %th Route:
-        - @result.each do |train|
-          %tr
-            .col-lg-6
-              %td= link_to train['number'], train_path(train['id'])
-              %td= train['arrival_time']
-              %td= train['departure_time']
-              %td= train['name']
+        =form_for(@ticket, url: new_ticket_path, html: {method: 'GET'}) do |form|
+          - @results.each do |result|
+            %tr
+              .col-lg-6
+                %td= link_to result['number'], train_path(result['id'])
+                %td= result['arrival_time']
+                %td= result['departure_time']
+                %td= result['name']
+                =form.hidden_field(:train_id, value: result['id'])
+                =form.hidden_field(:from_station_id, value: @stations['from_station_id'])
+                =form.hidden_field(:to_station_id, value: @stations['to_station_id'])
+                %td= submit_tag 'purchase'
 
 =link_to 'New search', new_search_path
