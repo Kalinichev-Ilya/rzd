@@ -22,7 +22,7 @@ module TrainsByStationsQuery
       INNER JOIN trains
       ON routes.id = trains.route_id
       WHERE railway_stations_routes.railway_station_id = #{first_station}
-      AND railway_stations_routes.railway_station_id = #{last_station}
+      OR railway_stations_routes.railway_station_id = #{last_station}
     SQL
   end
 end
