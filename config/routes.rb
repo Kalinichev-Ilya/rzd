@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :railway_stations do
-    patch :set_number, on: :member
+    patch :update_position, on: :member
   end
 
   resources :trains do
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :routes
 
-  resource :search, only: %i[new show]
+  resource :search, only: :show
 
   resources :tickets
 end

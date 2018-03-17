@@ -53,7 +53,6 @@ class WagonsController < ApplicationController
                                   :bottom_seats,
                                   :side_top_seats,
                                   :side_bottom_seats,
-                                  :seating_seats,
-                                  :train_id)
+                                  :seating_seats)
   end
 end

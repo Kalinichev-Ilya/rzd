@@ -1,8 +1,0 @@
-%h1 New Search
-
-= form_tag search_path, method: :get do
-  %tr
-    %td= select_tag :from_station_id, options_for_select(@stations.collect{|station| [station.title, station.id]})
-    %td= select_tag :to_station_id, options_for_select(@stations.collect{|station| [station.title, station.id]})
-  %tr
-    %td= submit_tag 'search'

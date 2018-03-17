@@ -1,5 +1,5 @@
 = form_for [@train, @wagon.becomes(Wagon)] do |form|
-  = render 'layouts/error', object: @wagon
+  = render 'layouts/error', resource: @wagon
   .col-lg-6
     %tr
       %th Type:

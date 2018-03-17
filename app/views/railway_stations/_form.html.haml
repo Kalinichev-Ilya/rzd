@@ -1,7 +1,7 @@
-= form_with(model: railway_station, local: true) do |form|
-  = render 'layouts/error', object: railway_station
+= form_for(@railway_station) do |form|
+  = render 'layouts/error', resource: @railway_station
   .field
     = form.label :title
-    = form.text_field :title, id: :railway_station_title
+    = form.text_field :title
   .actions
     = form.submit

@@ -1,5 +1,5 @@
-class AddStationNumberToRailwayStationsRoutes < ActiveRecord::Migration[5.1]
+class AddPositionToRailwayStationsRoutes < ActiveRecord::Migration[5.1]
   def change
-    add_column :railway_stations_routes, :station_number, :integer, index: true
+    add_column :railway_stations_routes, :position, :integer, index: true
   end
 end

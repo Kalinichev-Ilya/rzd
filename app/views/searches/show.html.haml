@@ -1,26 +1,29 @@
-%h1 Search result:
--if @results.nil? || @results.count == 0
-  = image_tag('no_result', size: "100x100")
-  %p No result
--else
-  .col-lg-12
-    %table
-      %tr
-        %th Train number:
-        %th Arrival time:
-        %th Departure time:
-        %th Route:
-        - @results.each do |result|
-          =form_for(@ticket, url: new_ticket_path, html: {method: 'GET'}) do |form|
-            %tr
-              .col-lg-6
-                %td= link_to result['number'], train_path(result['id'])
-                %td= result['arrival_time']
-                %td= result['departure_time']
-                %td= result['name']
-                =form.hidden_field(:train_id, value: result['id'])
-                =form.hidden_field(:from_station_id, value: @stations['from_station_id'])
-                =form.hidden_field(:to_station_id, value: @stations['to_station_id'])
-                %td= form.submit 'purchase'
+= form_tag search_path, method: :get do
+  %tr
+    %td= select_tag :from_station_id, options_for_select(@stations.collect{|station| [station.title, station.id]})
+    %td= select_tag :to_station_id, options_for_select(@stations.collect{|station| [station.title, station.id]})
+  %tr
+    %td= submit_tag 'search'
 
-=link_to 'New search', new_search_path
+  %h1 Search result:
+  -if @trains.nil?
+    Use the search to buy a ticket
+  -else
+    .col-lg-12
+      %table
+        %thead
+          %th Train number:
+          %th Arrival time:
+          %th Departure time:
+          %th Route:
+          - @trains.each do |train|
+            =form_tag(controller: :tickets, action: :new, method: :get) do
+              %tbody
+                %td= link_to train.number, train_path(train.id)
+                %td= @from_station.arrival_time(@route)
+                %td= @to_station.departure_time(@route)
+                %td= @route.name
+                %td= hidden_field_tag :train_id, train.id
+                %td= hidden_field_tag :from_station_id, @from_station.id
+                %td= hidden_field_tag :to_station_id, @to_station.id
+                %td= submit_tag 'purchase'

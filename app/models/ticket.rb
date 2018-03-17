@@ -11,11 +11,6 @@ class Ticket < ApplicationRecord
   private
 
   def generate_number
-    nums = []
-    chars = []
-    3.times { nums << (0..9).to_a.sample }
-    2.times { chars << ('A'..'Z').to_a.sample }
-
-    self.number = "#{nums.join}-#{chars.join}"
+    self.number = Ticket.last.number.to_i + 1
   end
 end
