@@ -2,4 +2,4 @@
 = render 'form', wagon: @wagon
 = link_to 'Show', edit_wagon_path(@wagon)
 %br
-= link_to 'Back', wagons_path
+= link_to 'Back', train_wagons_path(train_id: @wagon.train, id: @wagon)

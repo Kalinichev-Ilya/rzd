@@ -10,6 +10,14 @@ class Route < ApplicationRecord
                    uniqueness: true
   
   def station_number(station)
-    railway_stations_routes.find_by(railway_station: station)&.station_number
+    railway_stations_routes.find_by(railway_station: station)&.position
+  end
+  
+  def first_station
+    railway_stations.first
+  end
+  
+  def last_station
+    railway_stations.last
   end
 end

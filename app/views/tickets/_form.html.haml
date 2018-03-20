@@ -1,0 +1,24 @@
+= form_for(@ticket) do |form|
+  = render 'layouts/error', resource: @ticket
+  .field
+    .col-lg-12
+    %table
+      %tr
+        %th Train number:
+        %th From station:
+        %th To station:
+      %tr
+        %td= @train.number
+        %td= @from_station.title
+        %td= @to_station.title
+        = form.hidden_field(:train_id, value: @train.id)
+        = form.hidden_field(:from_station_id, value: @from_station.id)
+        = form.hidden_field(:to_station_id, value: @to_station.id)
+        %tr
+          %td= form.label :holder_name
+          %td= form.text_field :holder_name
+        %tr
+          %td= form.label :passport_data
+          %td= form.text_field :passport_data
+  .actions
+    = form.submit

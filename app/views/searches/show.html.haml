@@ -1,0 +1,29 @@
+= form_tag search_path, method: :get do
+  %tr
+    %td= select_tag :from_station_id, options_for_select(@stations.collect{|station| [station.title, station.id]})
+    %td= select_tag :to_station_id, options_for_select(@stations.collect{|station| [station.title, station.id]})
+  %tr
+    %td= submit_tag 'search'
+
+  %h1 Search result:
+  -if @trains.nil?
+    Use the search to buy a ticket
+  -else
+    .col-lg-12
+      %table
+        %thead
+          %th Train number:
+          %th Arrival time:
+          %th Departure time:
+          %th Route:
+          - @trains.each do |train|
+            =form_tag(controller: :tickets, action: :new, method: :get) do
+              %tbody
+                %td= link_to train.number, train_path(train.id)
+                %td= @from_station.arrival_time(@route)
+                %td= @to_station.departure_time(@route)
+                %td= @route.name
+                %td= hidden_field_tag :train_id, train.id
+                %td= hidden_field_tag :from_station_id, @from_station.id
+                %td= hidden_field_tag :to_station_id, @to_station.id
+                %td= submit_tag 'purchase'

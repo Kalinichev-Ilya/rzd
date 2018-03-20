@@ -13,18 +13,36 @@
       %br
     = link_to 'create train', new_train_path
 
-  .col-lg-6
+  .col-lg-12
     %strong Stations:
     - if @route.railway_stations.any?
-      - @stations.each do |station|
-        .col-lg-3
-        %td= @route.station_number(station)
-        %td= station.title
+      %table
+        %thead
+          %th Number:
+          %th{style: 'width: 150px'} Title:
+          %th Change to:
+          %th{style: 'width: 150px'} Arrival:
+          %th{style: 'width: 150px'} Departure:
+        %tbody
+          - @route.railway_stations.ordered.each do |station|
+            %tr
+              .col-lg-6
+                %td= @route.station_number(station) || 'n/a'
+                %td= station.title
+                %td
+                  = form_tag update_position_railway_station_path(station), method: :patch do
+                    %table
+                      %tbody
+                        %td= number_field_tag :position
+                        %td= hidden_field_tag :route_id, @route.id
+                        %td= submit_tag 'submit'
+                %td= station.arrival_time(@route).strftime("%d %a %H:%M")
+                %td= station.departure_time(@route).strftime("%d %a %H:%M")
     - else
-      No stations in this route,
-      %br
-    = link_to 'create station', new_railway_station_path
-        
+      No stations in this route
+
+    = link_to 'Create station', new_railway_station_path
+
 = link_to 'Edit', edit_route_path(@route)
 %br
 = link_to 'Back', routes_path

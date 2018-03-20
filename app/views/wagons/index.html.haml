@@ -1,12 +1,17 @@
 #notice= notice
-%h1 Wagons
+
+%h1= link_to "Train #{@train.number}", @train
+
+%h2 Wagons
 %table
   %thead
     %tr
-      %th Type:
+      %th Number:
       %th{:colspan => '3'}
   %tbody
     -@wagons.each do |wagon|
       = render 'wagon', wagon: wagon
 %br
-= link_to 'New wagon', new_wagon_path
+
+= link_to 'Back', train_wagons_path(@train)
+= link_to 'New wagon', new_train_wagon_path(train_id: @train)

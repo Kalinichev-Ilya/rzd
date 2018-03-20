@@ -11,7 +11,9 @@
 .col-lg-6
   %strong Wagons:
   - @train.sorted_wagons.each do |wagon|
-    = link_to wagon.number, wagon_path(id: wagon.id)
+    %li= link_to "Wagon number:#{wagon.number}", wagon_path(wagon.id)
+
+  = link_to 'Add wagon', new_train_wagon_path(@train)
 
 = link_to 'Edit', edit_train_path(@train)
 %br

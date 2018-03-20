@@ -6,7 +6,7 @@ class RoutesController < ApplicationController
   end
 
   def show
-    @stations = @route.railway_stations
+    @stations = @route.railway_stations.ordered
   end
 
   def new
